@@ -31,32 +31,35 @@ public class HomePageTest extends driver {
 
     @AfterTest //post-conditions
     public void endTest() {
-        driver.quit();
-        System.out.println("Tests have passed");
+//        driver.quit();
+//        System.out.println("Tests have passed");
     }
 
     @Test
     public void FindElementDynamicID() {
         HomePage.FindElementDynamicID();
-        driver.quit();
     }
 
     @Test
     public void ClassAttribute(){
         HomePage.ClassAttribute();
-        driver.quit();
     }
 
     @Test
     public void HiddenLayers1(){
         HomePage.HiddenLayers1();
-        driver.quit();
+        System.out.println("Test passed");
+    }
+
+    @Test
+    public void LoadDelay(){
+        HomePage.LoadDelay();
     }
 
     @Test
     public void AJAXData() {
         HomePage.AJAXData();
-        driver.quit();
+
     }
 
 //    @Test

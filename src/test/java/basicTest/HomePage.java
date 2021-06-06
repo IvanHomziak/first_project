@@ -1,14 +1,14 @@
 package basicTest;
 
-import org.openqa.selenium.WebDriver; //
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.awt.image.ByteLookupTable;
 import java.util.concurrent.TimeUnit;
+//import org.openqa.selenium.support.ui;
 
 
 public class HomePage extends driver{ /* створюємо клас хоум пейдж. для того щоб взаємодіяти з цим класом
@@ -29,6 +29,8 @@ public class HomePage extends driver{ /* створюємо клас хоум п
         driver.findElement(By.xpath("/html/body/section/div/button")).click();
         driver.quit();
     }
+
+
 
     public static void ClassAttribute() {
         driver.get("http://www.uitestingplayground.com/");
@@ -63,15 +65,28 @@ public class HomePage extends driver{ /* створюємо клас хоум п
 //
 //        WebElement FindButtonClass = driver.findElement(By.);
 //        FindButtonClass.click();
-//        driver.quit();
+        driver.quit();
         System.out.println("Test succeed");
     }
+
+
 
         public static void HiddenLayers1() {
             driver.get("http://www.uitestingplayground.com/hiddenlayers");
             Actions action = new Actions(driver);
             action.doubleClick();
             driver.quit();
+            System.out.println("Test passed");
+        }
+
+
+
+        public static void LoadDelay() {
+            driver.get("http://www.uitestingplayground.com/");
+            driver.findElement(By.xpath("//*[@id=\"overview\"]/div/div[1]/div[4]/h3/a")).click();
+            WebDriverWait wait = new WebDriverWait(driver, 15);
+            driver.quit();
+            System.out.println("Test passed");
         }
 
 
@@ -92,9 +107,8 @@ public class HomePage extends driver{ /* створюємо клас хоум п
         //        WebElement waitResult = new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable
         WebDriverWait wait = new WebDriverWait(driver, 15);
         WebElement waitUntil = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/div/div/p")));
-
-
-
+        driver.quit();
+        System.out.println("Test passed");
     }
 
 
