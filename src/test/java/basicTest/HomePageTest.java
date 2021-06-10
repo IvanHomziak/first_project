@@ -40,15 +40,18 @@ public class HomePageTest extends driver {
         HomePage.FindElementDynamicID();
     }
 
+
+
     @Test
     public void ClassAttribute(){
         HomePage.ClassAttribute();
     }
 
+
+
     @Test
     public void HiddenLayers1(){
         HomePage.HiddenLayers1();
-        System.out.println("Test passed");
     }
 
     @Test
@@ -74,13 +77,11 @@ public class HomePageTest extends driver {
 
     @Test
     public void InputText() {
-
         HomePage.InputText();
     }
 
     @Test
     public void Scrollbars() {
-
         HomePage.ScrollBars();
     }
 
@@ -89,15 +90,14 @@ public class HomePageTest extends driver {
         HomePage.DynamicTable();
     }
 
-    @Test
-    public void ProgressBar() {
-
-        HomePage.ProgressBar();
+     @Test
+    public void Visibility() {
+        HomePage.Visibility1();
     }
 
     @Test
-    public void Visibility() {
-        HomePage.Visibility1();
+    public void ProgressBar() {
+        HomePage.ProgressBar();
     }
 
 

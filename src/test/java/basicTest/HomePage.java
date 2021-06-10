@@ -181,7 +181,7 @@ public class HomePage extends driver{
         {
             WebElement button = buttons1.get(i);
 
-            System.out.println(button.getText());//It prints all the buttons name displayed on the page
+            System.out.println(button.getText());//ця команда виведе всі доступні кнопки на сторінці
 
         }
         System.out.println("Displayed only Hide Button");
