@@ -1,33 +1,25 @@
 package basicTest;
 
-import org.openqa.selenium.WebDriver;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.awt.image.ByteLookupTable;
 import java.util.concurrent.TimeUnit;
-//import org.openqa.selenium.support.ui;
+import org.openqa.selenium.JavascriptExecutor;
 
 
-public class HomePage extends driver{ /* створюємо клас хоум пейдж. для того щоб взаємодіяти з цим класом
-в селеніум веб драйвері на потрібні два класи: Ву і Веб-Драйвер.
-Будь який клас це шавлон по якому створюється об*єкт.*/
-
-
-
-    //By homeTabTitle = By.id("title");
-    // By buttonId = By.id("id=cfae2613-fac9-f277-a48a-14036b611b01")
-
+public class HomePage extends driver{
 
     public static void FindElementDynamicID() {
-        /* driver.get("http://www.uitestingplayground.com/home");*//*
-        driver.findElement(By.name("Button with Dynamic ID")).click();*/
+
         driver.get("http://www.uitestingplayground.com/");
         driver.findElement(By.cssSelector("#overview > div > div:nth-child(1) > div:nth-child(1) > h3 > a")).click();
         driver.findElement(By.xpath("/html/body/section/div/button")).click();
         driver.quit();
+        System.out.println("Test succeed");
+
     }
 
 
@@ -36,14 +28,10 @@ public class HomePage extends driver{ /* створюємо клас хоум п
         driver.get("http://www.uitestingplayground.com/");
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.findElement(By.xpath("/html/body/section[2]/div/div[1]/div[2]/h3/a")).click();
-//        System.out.println("1");
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-        // String buttonCollor =
-        // WebElement blueButton = driver.findElement(By.tagName("button"));
         String blueButton11 = driver.findElement(By.xpath("/html/body/section/div/button[1]")).getCssValue("backgroud-color");
         WebElement blueButton1 = driver.findElement(By.xpath("/html/body/section/div/button[1]"));
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
-//        System.out.println("1");
         String blueButton22 = driver.findElement(By.xpath("/html/body/section/div/button[2]")).getCssValue("backgroud-color");
         WebElement blueButton2 = driver.findElement(By.xpath("/html/body/section/div/button[2]"));
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
@@ -53,18 +41,12 @@ public class HomePage extends driver{ /* створюємо клас хоум п
         if (blueButton11.contains("#007bff")) {
             blueButton1.click();
         }
-//        System.out.println("1");
         if (blueButton22.contains("#007bff")) {
             blueButton2.click();
         }
-//        System.out.println("2");
         if (blueButton33.contains("#007bff")) {
             blueButton3.click();
         }
-//        System.out.println("3");
-//
-//        WebElement FindButtonClass = driver.findElement(By.);
-//        FindButtonClass.click();
         driver.quit();
         System.out.println("Test succeed");
     }
@@ -91,25 +73,106 @@ public class HomePage extends driver{ /* створюємо клас хоум п
 
 
     public static void AJAXData() {
-//        driver.get("http://www.uitestingplayground.com/ajax");
-//        driver.findElement(By.xpath("//*[@id=\"ajaxButton\"]")).click();
-//        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-//        WebElement element = driver.findElement(By.tagName("p"));
-//        WebDriver driver = new FirefoxDriver();
-        driver.get("http://www.uitestingplayground.com/ajax");
-//        driver.findElement(By.name("Data loaded with AJAX get request."));
-//        driver.findElement(By.xpath("/html/body/section/div/button")).click();
-        WebElement pressButton = driver.findElement(By.xpath("/html/body/section/div/button"));
-        pressButton.click();
-        System.out.println("Test stage");
+        driver.get("http://www.uitestingplayground.com/");
+        System.out.println("1");
 
-//        driver.manage().timeouts().implicitlyWait(5000, TimeUnit.SECONDS);
-        //        WebElement waitResult = new WebDriverWait(driver, Duration.ofSeconds(15)).until(ExpectedConditions.elementToBeClickable
-        WebDriverWait wait = new WebDriverWait(driver, 15);
-        WebElement waitUntil = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/section/div/div/p")));
+        driver.findElement(By.xpath("/html/body/section[2]/div/div[2]/div[1]/h3/a")).click();
+        System.out.println("2");
+
+        driver.findElement(By.xpath("//*[@id=\"ajaxButton\"]")).click();
+        System.out.println("3");
+
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println("4");
+
         driver.quit();
         System.out.println("Test passed");
     }
+
+
+    public static void ClientSideDelay() {
+        driver.get("http://www.uitestingplayground.com/");
+        driver.findElement(By.xpath("//*[@id=\"overview\"]/div/div[2]/div[2]/h3/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"ajaxButton\"]")).click();
+        try {
+            Thread.sleep(15000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.xpath("/html/body/section/div/div/p"));
+        driver.quit();
+        System.out.println("Test passed");
+
+    }
+
+    public static void Click() {
+        driver.get("http://www.uitestingplayground.com/");
+        driver.findElement(By.xpath("//*[@id=\"overview\"]/div/div[2]/div[3]/h3/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"badButton\"]\n")).click();
+        driver.findElement(By.xpath("//*[@id=\"badButton\"]")).getCssValue("#218838");
+        driver.quit();
+        System.out.println("Test passed");
+
+    }
+
+    public static void InputText() {
+        driver.get("http://www.uitestingplayground.com/");
+        driver.findElement(By.xpath("//*[@id=\"overview\"]/div/div[2]/div[4]/h3/a")).click();
+        WebElement myButton = driver.findElement(By.id("newButtonName"));
+        myButton.sendKeys("New Button Name");
+        driver.findElement(By.xpath("//*[@id=\"updatingButton\"]")).click();
+        String buttonName = driver.findElement(By.xpath("//*[@id=\"updatingButton\"]")).getText();
+        Assert.assertEquals("New Button Name" , buttonName);
+        driver.quit();
+
+    }
+
+    public static void Scrollbars() {
+        driver.get("http://www.uitestingplayground.com/");
+//
+//
+//        // Initially I need to hover the mouse on Select Project menu.
+//
+//        Actions action = new Actions(driver);
+//        WebElement list = driver.findElement(By.xpath("//*[@id=\"hidingButton\"]"));
+//        action.moveToElement(list);
+//        JavascriptExecutor js = (JavascriptExecutor) driver;
+//
+//
+//        // Now I need to scroll down till find my desire project in the list.
+//
+//        WebElement Project = driver.findElement(By.xpath("//*[@id=\"hidingButton\"]"+ projectName +"']"));
+//        js.executeScript("arguments[0].scrollIntoView(true);",Project);
+//        Project.click();
+
+
+    }
+
+    public static void ProgressBar() {
+        driver.get("http://www.uitestingplayground.com/");
+        driver.findElement(By.xpath("//*[@id=\"overview\"]/div/div[3]/div[4]/h3/a")).click();
+        driver.findElement(By.xpath("//*[@id=\"startButton\"]")).click();
+        WebElement stopButtonProgressBar = driver.findElement(By.xpath("//*[@id=\"stopButton\"]"));
+        String progressBar1 = driver.findElement(By.xpath("/html/body/section/div/div[1]")).getCssValue("style");
+//        if (progressBar1.contains("width: 75%")){
+//            stopButtonProgressBar.click();
+//        }
+//        WebDriverWait waitForElement = new WebDriverWait(driver, 15));
+
+//        waitForElement.until(ExpectedConditions.)
+//                Until(ExpectedConditions.ElementIsVisible(By.CssSelector("div[class*='progress-bar-success']")));;
+
+
+
+
+
+
+    }
+
 
 
 

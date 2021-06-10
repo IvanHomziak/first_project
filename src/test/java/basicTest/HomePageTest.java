@@ -62,6 +62,34 @@ public class HomePageTest extends driver {
 
     }
 
+    @Test
+    public void ClientSideDelay() {
+        HomePage.ClientSideDelay();
+    }
+
+    @Test
+    public void Click() {
+        HomePage.Click();
+    }
+
+    @Test
+    public void InputText() {
+        HomePage.InputText();
+    }
+
+    @Test
+    public void Scrollbars() {
+        HomePage.Scrollbars();
+    }
+
+    @Test
+    public void ProgressBar() {
+        HomePage.ProgressBar();
+    }
+
+
+
+
 //    @Test
 //    public void LoaderDelegate(){
 //        HomePage.LoadDelays();

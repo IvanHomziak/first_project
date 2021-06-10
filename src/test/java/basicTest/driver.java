@@ -8,4 +8,5 @@ public class driver {
 
     static WebDriver driver = new FirefoxDriver();
 
+
 }
