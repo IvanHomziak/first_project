@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.JavascriptExecutor;
 
@@ -29,15 +31,19 @@ public class HomePage extends driver{
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         driver.findElement(By.xpath("/html/body/section[2]/div/div[1]/div[2]/h3/a")).click();
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
         String blueButton11 = driver.findElement(By.xpath("/html/body/section/div/button[1]")).getCssValue("backgroud-color");
         WebElement blueButton1 = driver.findElement(By.xpath("/html/body/section/div/button[1]"));
+
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
         String blueButton22 = driver.findElement(By.xpath("/html/body/section/div/button[2]")).getCssValue("backgroud-color");
         WebElement blueButton2 = driver.findElement(By.xpath("/html/body/section/div/button[2]"));
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
         String blueButton33 = driver.findElement(By.xpath("/html/body/section/div/button[3]")).getCssValue("backgroud-color");
         WebElement blueButton3 = driver.findElement(By.xpath("/html/body/section/div/button[3]"));
         driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
+
         if (blueButton11.contains("#007bff")) {
             blueButton1.click();
         }
@@ -127,30 +133,83 @@ public class HomePage extends driver{
         driver.findElement(By.xpath("//*[@id=\"updatingButton\"]")).click();
         String buttonName = driver.findElement(By.xpath("//*[@id=\"updatingButton\"]")).getText();
         Assert.assertEquals("New Button Name" , buttonName);
+        System.out.println("Test passed");
         driver.quit();
 
     }
 
-    public static void Scrollbars() {
+    public static void ScrollBars() {
         driver.get("http://www.uitestingplayground.com/");
-//
-//
-//        // Initially I need to hover the mouse on Select Project menu.
-//
-//        Actions action = new Actions(driver);
-//        WebElement list = driver.findElement(By.xpath("//*[@id=\"hidingButton\"]"));
-//        action.moveToElement(list);
-//        JavascriptExecutor js = (JavascriptExecutor) driver;
-//
-//
-//        // Now I need to scroll down till find my desire project in the list.
-//
-//        WebElement Project = driver.findElement(By.xpath("//*[@id=\"hidingButton\"]"+ projectName +"']"));
-//        js.executeScript("arguments[0].scrollIntoView(true);",Project);
-//        Project.click();
+        driver.findElement(By.xpath("//*[@id=\"overview\"]/div/div[3]/div[1]/h3/a")).click();
+        WebElement hidingButton = driver.findElement(By.xpath("//*[@id=\"hidingButton\"]"));
+        JavascriptExecutor jS= (JavascriptExecutor) driver;
+        jS.executeScript("arguments[0].scrollIntoView(true);", hidingButton);
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        hidingButton.click();
+        System.out.println("Test passed");
+        driver.quit();
+
+    }
+
+    public static void Visibility1() {
+        driver.get("http://www.uitestingplayground.com/");
+        driver.findElement(By.xpath("//*[@id=\"overview\"]/div/div[4]/div[1]/h3/a")).click();
+
+        List<WebElement> buttons = driver.findElements(By.tagName("button"));
+
+        for ( int i=0; i<buttons.size();i++)
+        {
+            WebElement button = buttons.get(i);
+
+            System.out.println(button.getText());//It prints all the buttons name displayed on the page
+
+        }
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        WebElement hideButton = driver.findElement(By.xpath("//*[@id=\"hideButton\"]"));
+        hideButton.click();
+        List<WebElement> buttons1 = driver.findElements(By.tagName("button"));
+
+        for ( int i=0; i<buttons1.size();i++)
+        {
+            WebElement button = buttons1.get(i);
+
+            System.out.println(button.getText());//It prints all the buttons name displayed on the page
+
+        }
+        System.out.println("Displayed only Hide Button");
+        driver.quit();
 
 
     }
+
+    public static void DynamicTable() {
+        driver.get("http://www.uitestingplayground.com/");
+        driver.findElement(By.xpath("//*[@id=\"overview\"]/div/div[3]/div[2]/h3/a")).click();
+        String chrom1 = driver.findElement(By.xpath("/html/body/section/div/div/div[3]/div[3]/span[1]")).getText();
+        String chrom2 = driver.findElement(By.xpath("/html/body/section/div/div/div[2]/div/span[3]")).getText();
+        String chrom3 = ":";
+        String chrom4 = driver.findElement(By.xpath("/html/body/section/div/div/div[3]/div[3]/span[3]")).getText();
+        System.out.println("chrom1"+"chrom2"+"chrom3"+"chrom4");
+
+//        String chrom5 = driver.findElement(By.xpath("/html/body/section/div/p[2]")).getText();
+//        WebElement chromeCPUValue = driver.findElement(By.tagName("div"));
+//        WebElement chromeCPUValue2 = driver.findElement(By.xpath("/html/body/section/div/p[2]"));
+//        if (chromeCPUValue == chromeCPUValue2, ) {
+//            System.out.println("Test passed");
+//
+//        }
+        System.out.println("Test passed");
+        driver.quit();
+    }
+
 
     public static void ProgressBar() {
         driver.get("http://www.uitestingplayground.com/");

@@ -74,18 +74,33 @@ public class HomePageTest extends driver {
 
     @Test
     public void InputText() {
+
         HomePage.InputText();
     }
 
     @Test
     public void Scrollbars() {
-        HomePage.Scrollbars();
+
+        HomePage.ScrollBars();
+    }
+
+    @Test
+    public void DynamicTable() {
+        HomePage.DynamicTable();
     }
 
     @Test
     public void ProgressBar() {
+
         HomePage.ProgressBar();
     }
+
+    @Test
+    public void Visibility() {
+        HomePage.Visibility1();
+    }
+
+
 
 
 
